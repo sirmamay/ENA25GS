@@ -1,0 +1,7 @@
+{
+  "name": "Encuesta Nacional Agropecuaria 2025",
+  "description": "A digital form for the National Agricultural Survey 2025 (ENA). This application allows supervisors to fill out the survey for interviewers, save the progress offline, and sync the data when an internet connection is available.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

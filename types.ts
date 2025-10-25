@@ -1,0 +1,122 @@
+export type YesNoNa = 'yes' | 'no' | 'na' | null;
+
+export interface SurveyFormState {
+  coordinacionEstatal: string;
+  municipio: string;
+  localidad: string;
+  jefeDeControl: string;
+  semana: string;
+  numeroDeGuia: string;
+  jefeDeCampo: string;
+  entrevistador: string;
+  supervisor: string;
+  fechaDeSupervision: string;
+  
+  // Page 1
+  q1_battery: string;
+  q2_departureTime: string;
+  q3_arrivalTime: string;
+  q4_answer: YesNoNa;
+  q4_cause: string;
+  q4_cause_other: string;
+  q5_answer: 'yes' | 'no' | null;
+  q6_answer: 'yes' | 'no' | null;
+  q6_cause: string[];
+  q6_cause_other: string;
+  q7_answer: 'yes' | 'no' | null;
+  q8_answer: YesNoNa;
+  q9_answer: 'yes' | 'no' | null;
+  q10_answer: 'yes' | 'no' | null;
+  q10_cause: string;
+  q10_cause_other: string;
+  q11_answer: 'yes' | 'no' | null;
+  q11_cause: string;
+  q11_cause_other: string;
+  q12_strategies: string[];
+  q12_strategy_other: string;
+
+  // Page 2
+  q13_time: string;
+  q13_cause: string;
+  q13_cause_other: string;
+  q14_time: string;
+  q14_cause: string;
+  q14_cause_other: string;
+  q15_answer: 'yes' | 'no' | null;
+  q15_medium: string;
+  q15_medium_other: string;
+  q16_answer: 'yes' | 'no' | null;
+  q16_investigation: string;
+  q16_investigation_other: string;
+  q17_situation: string;
+  q17_situation_other: string;
+  q18_answer: 'yes' | 'no' | null;
+  q18_cause: string;
+  q18_cause_other: string;
+  q19_answer: 'yes' | 'no' | null;
+  q19_cause: string;
+  q19_cause_other: string;
+  q20_answer: 'yes' | 'no' | null;
+  q20_cause: string;
+  q20_cause_other: string;
+
+  // Page 3
+  q21_answer: 'yes' | 'no' | null;
+  q21_cause: string;
+  q21_cause_other: string;
+  q22_answer: YesNoNa;
+  q22_cause: string;
+  q22_cause_other: string;
+  q23_answer: 'yes' | 'no' | null;
+  q23_cause: string;
+  q23_cause_other: string;
+  q24_answer: 'yes' | 'no' | null;
+  q24_situation: string;
+  q24_situation_other: string;
+  q25_answer: 'yes' | 'no' | null;
+  q25_cause: string;
+  q25_cause_other: string;
+  q26_answer: 'yes' | 'no' | null;
+  q26_situation: string;
+  q26_situation_other: string;
+  q27_answer: 'yes' | 'no' | null;
+  q27_cause: string;
+  q27_cause_other: string;
+  q28_visitNumber: string;
+  q29_answer: 'yes' | 'no' | null;
+  q29_cause: string;
+  q29_cause_other: string;
+  q30_answer: 'yes' | 'no' | null;
+  q30_situation: string;
+
+  // Page 4
+  q31_answer: 'yes' | 'no' | null;
+  q31_situation: string;
+  q32_answer: 'yes' | 'no' | null;
+  q32_situation: string;
+  q32_situation_other: string;
+  q33_pending_02: string;
+  q33_pending_03: string;
+  q33_pending_04: string;
+  q33_pending_05: string;
+  q34_answer: 'yes' | 'no' | null;
+  q34_cause: string;
+  q34_cause_other: string;
+  q34a_transferMethod: string;
+  q35_answer: 'yes' | 'no' | null;
+  q35_cause: string;
+  q35_cause_other: string;
+  q36_answer: 'yes' | 'no' | null;
+  q36_cause: string;
+  q36_cause_other: string;
+  q37_questionnaires_week: string;
+  q37_1_questionnaires_day: string;
+  q38_terrains_week: string;
+  q38_1_terrains_captured: string;
+  q39_answer: 'yes' | 'no' | null;
+  q39_incidents: string[];
+  q39_incidents_other: string;
+  q40_endTime: string;
+  additionalComments: string;
+  capturedImage: string | null;
+}
