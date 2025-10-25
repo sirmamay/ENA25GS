@@ -159,18 +159,35 @@ const App: React.FC = () => {
     const handleSync = async () => {
         if (!isOnline) {
             setSyncStatus('error');
+            alert("No hay conexión a internet. No se puede sincronizar.");
             setTimeout(() => setSyncStatus('idle'), 3000);
             return;
         }
         setSyncStatus('syncing');
-        console.log("Syncing data:", formData);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        if (Math.random() > 0.1) {
+        
+        try {
+            const response = await fetch('/api/sync-to-sheet', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error en el servidor');
+            }
+
+            console.log("Syncing data:", formData);
             setSyncStatus('success');
-        } else {
+
+        } catch (error) {
+            console.error("Sync failed:", error);
             setSyncStatus('error');
+        } finally {
+            setTimeout(() => setSyncStatus('idle'), 3000);
         }
-        setTimeout(() => setSyncStatus('idle'), 3000);
     };
 
     const resetForm = () => {
