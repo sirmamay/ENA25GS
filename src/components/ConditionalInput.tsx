@@ -32,7 +32,7 @@ const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, option
             {title && <h4 className="font-semibold text-sm text-gray-700 mb-3">{title}</h4>}
             <div className="space-y-2">
                 {options.map((option) => (
-                    <label key={option.value} className="flex items-center text-sm text-gray-800">
+                    <label key={option.value} className="flex items-start text-sm text-gray-800">
                         {type === 'radio' ? (
                              <input
                                 type="radio"
@@ -40,7 +40,7 @@ const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, option
                                 value={option.value}
                                 checked={value === option.value}
                                 onChange={(e) => onChange(e.target.value)}
-                                className="mr-3 h-4 w-4 text-lime-600 focus:ring-lime-500 border-gray-300"
+                                className="h-4 w-4 flex-shrink-0 mt-0.5 text-lime-600 focus:ring-lime-500 border-gray-300"
                             />
                         ) : (
                             <input
@@ -49,10 +49,10 @@ const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, option
                                 value={option.value}
                                 checked={Array.isArray(value) && value.includes(option.value)}
                                 onChange={() => handleCheckboxChange(option.value)}
-                                className="mr-3 h-4 w-4 text-lime-600 focus:ring-lime-500 border-gray-300 rounded"
+                                className="h-4 w-4 flex-shrink-0 mt-0.5 text-lime-600 focus:ring-lime-500 border-gray-300 rounded"
                             />
                         )}
-                        <span><span className="font-bold mr-2">{option.value}</span>{option.label}</span>
+                        <span className="ml-3"><span className="font-bold mr-2">{option.value}</span>{option.label}</span>
                     </label>
                 ))}
                 {showOther && onOtherChange && (
