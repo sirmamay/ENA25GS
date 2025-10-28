@@ -14,9 +14,10 @@ interface ConditionalInputProps {
     otherValue?: string;
     onOtherChange?: (value: string) => void;
     showOther?: boolean;
+    name: string;
 }
 
-const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, options, value, onChange, otherValue, onOtherChange, showOther }) => {
+const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, options, value, onChange, otherValue, onOtherChange, showOther, name }) => {
     
     const handleCheckboxChange = (optionValue: string) => {
         const currentValue = Array.isArray(value) ? value : [];
@@ -35,7 +36,7 @@ const ConditionalInput: React.FC<ConditionalInputProps> = ({ title, type, option
                         {type === 'radio' ? (
                              <input
                                 type="radio"
-                                name={title}
+                                name={name}
                                 value={option.value}
                                 checked={value === option.value}
                                 onChange={(e) => onChange(e.target.value)}

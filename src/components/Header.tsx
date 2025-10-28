@@ -33,7 +33,21 @@ const Header: React.FC<HeaderProps> = ({ formData, handleChange }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 pt-4 border-t-2 border-black">
                  <InfoInput label="MUNICIPIO" value={formData.municipio} onChange={e => handleChange('municipio', e.target.value)} />
-                 <InfoInput label="JEFE(A) DE CAMPO" value={formData.jefeDeCampo} onChange={e => handleChange('jefeDeCampo', e.target.value)} />
+                 <div className="flex flex-col">
+                    <label className="text-xs font-semibold text-gray-600 mb-1">JEFE(A) DE CAMPO</label>
+                    <select
+                        value={formData.jefeDeCampo}
+                        onChange={e => handleChange('jefeDeCampo', e.target.value)}
+                        className="border-b-2 border-gray-300 focus:border-blue-500 outline-none px-1 py-0.5 text-sm bg-white"
+                    >
+                        <option value="">Seleccione un jefe</option>
+                        {[...Array(7).keys()].map(i => (
+                            <option key={i + 1} value={i + 1}>
+                                {i + 1}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                  <InfoInput label="ENTREVISTADOR(A)" value={formData.entrevistador} onChange={e => handleChange('entrevistador', e.target.value)} />
                  <div className="flex flex-col">
                     <label className="text-xs font-semibold text-gray-600 mb-1">FECHA DE SUPERVISIÓN</label>
