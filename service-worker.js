@@ -1,9 +1,8 @@
-const CACHE_NAME = 'ena-2025-cache-v3'; // Incrementamos la versión para forzar la actualización
+const CACHE_NAME = 'ena-2025-cache-v4'; // Incrementamos la versión para forzar la actualización
 const urlsToCache = [
   '/',
   '/index.html',
-  '/manifest.json',
-  'https://www.inegi.org.mx/inegi/img/inegi_logo.png'
+  '/manifest.json'
 ];
 
 self.addEventListener('install', event => {

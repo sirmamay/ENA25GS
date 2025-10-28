@@ -37,7 +37,7 @@ const GuiaVisual: React.FC<GuiaVisualProps> = ({ onBack }) => {
                     <div className="flex justify-between items-start mb-6">
                         <div>
                             <h1 className="text-3xl font-bold text-gray-800">Guía Visual de Llenado</h1>
-                            <p className="text-lg text-gray-600">Encuesta Nacional Agropecuaria 2025</p>
+                            <p className="text-lg text-gray-600">ENA 2025</p>
                         </div>
                         <div className="no-print flex items-center space-x-2">
                             <button onClick={onBack} className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors">
@@ -128,7 +128,7 @@ const GuiaVisual: React.FC<GuiaVisualProps> = ({ onBack }) => {
                     </section>
 
                     <div className="mt-12 pt-4 border-t text-center text-xs text-gray-500">
-                        <p>Guía generada para la Encuesta Nacional Agropecuaria 2025. Versión 1.0</p>
+                        <p>Guía generada para la ENA 2025. Versión 1.0</p>
                     </div>
                 </div>
             </div>

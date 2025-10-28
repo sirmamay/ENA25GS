@@ -20,10 +20,9 @@ const Header: React.FC<HeaderProps> = ({ formData, handleChange, onShowGuide }) 
         <header className="border-2 border-black p-4 space-y-4">
             <div className="flex justify-between items-start">
                 <div className="flex items-center space-x-4">
-                    <img src="https://www.inegi.org.mx/inegi/img/inegi_logo.png" alt="INEGI Logo" className="h-12"/>
                     <div>
-                        <h1 className="font-bold text-lg">ENCUESTA NACIONAL AGROPECUARIA 2025</h1>
-                        <h2 className="text-md text-gray-700">Guía de supervisión al (a la) entrevistador(a)</h2>
+                        <h1 className="font-bold text-lg">ENA 2025</h1>
+                        <h2 className="text-md text-gray-700">Guía de Supervisión</h2>
                     </div>
                 </div>
                  <div className="flex flex-col items-end space-y-2">
