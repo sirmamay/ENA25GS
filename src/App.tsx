@@ -7,6 +7,7 @@ import ConditionalInput from './components/ConditionalInput';
 import Footer from './components/Footer';
 import CameraFab from './components/CameraFab';
 import SavedSurveysModal from './components/SavedSurveysModal';
+import GuiaVisual from './components/GuiaVisual';
 
 const createNewSurvey = (): SurveyFormState => ({
     id: Date.now(),
@@ -123,6 +124,7 @@ const App: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
+    const [view, setView] = useState<'survey' | 'guide'>('survey');
     
     // Load initial data from localStorage
     useEffect(() => {
@@ -301,6 +303,10 @@ const App: React.FC = () => {
             <h3 className="font-bold text-gray-700">{title}</h3>
         </div>
     );
+
+    if (view === 'guide') {
+        return <GuiaVisual onBack={() => setView('survey')} />;
+    }
     
     if (!activeSurvey) {
         return (
@@ -315,7 +321,7 @@ const App: React.FC = () => {
     return (
         <div className="bg-gray-100 min-h-screen font-sans">
             <main className="max-w-4xl mx-auto p-4 md:p-8 bg-white shadow-lg">
-                <Header formData={formData} handleChange={handleChange} />
+                <Header formData={formData} handleChange={handleChange} onShowGuide={() => setView('guide')} />
                 
                 <div className="space-y-6 mt-6">
                     {/* Questions 1-12 */}
