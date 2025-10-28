@@ -6,161 +6,197 @@ import YesNoNaInput from './components/YesNoNaInput';
 import ConditionalInput from './components/ConditionalInput';
 import Footer from './components/Footer';
 import CameraFab from './components/CameraFab';
+import SavedSurveysModal from './components/SavedSurveysModal';
+
+const createNewSurvey = (): SurveyFormState => ({
+    id: Date.now(),
+    municipio: '',
+    semana: '',
+    jefeDeCampo: '',
+    entrevistador: '',
+    fechaDeSupervision: '',
+    q1_battery: '',
+    q2_departureTime: '',
+    q3_arrivalTime: '',
+    q4_answer: null,
+    q4_cause: '',
+    q4_cause_other: '',
+    q5_answer: null,
+    q6_answer: null,
+    q6_cause: [],
+    q6_cause_other: '',
+    q7_answer: null,
+    q8_answer: null,
+    q9_answer: null,
+    q10_answer: null,
+    q10_cause: '',
+    q10_cause_other: '',
+    q11_answer: null,
+    q11_cause: '',
+    q11_cause_other: '',
+    q12_strategies: [],
+    q12_strategy_other: '',
+    q13_time: '',
+    q13_cause: '',
+    q13_cause_other: '',
+    q14_time: '',
+    q14_cause: '',
+    q14_cause_other: '',
+    q15_answer: null,
+    q15_medium: '',
+    q15_medium_other: '',
+    q16_answer: null,
+    q16_investigation: '',
+    q16_investigation_other: '',
+    q17_situation: '',
+    q17_situation_other: '',
+    q18_answer: null,
+    q18_cause: '',
+    q18_cause_other: '',
+    q19_answer: null,
+    q19_cause: '',
+    q19_cause_other: '',
+    q20_answer: null,
+    q20_cause: '',
+    q20_cause_other: '',
+    q21_answer: null,
+    q21_cause: '',
+    q21_cause_other: '',
+    q22_answer: null,
+    q22_cause: '',
+    q22_cause_other: '',
+    q23_answer: null,
+    q23_cause: '',
+    q23_cause_other: '',
+    q24_answer: null,
+    q24_situation: '',
+    q24_situation_other: '',
+    q25_answer: null,
+    q25_cause: '',
+    q25_cause_other: '',
+    q26_answer: null,
+    q26_situation: '',
+    q26_situation_other: '',
+    q27_answer: null,
+    q27_cause: '',
+    q27_cause_other: '',
+    q28_visitNumber: '',
+    q29_answer: null,
+    q29_cause: '',
+    q29_cause_other: '',
+    q30_answer: null,
+    q30_situation: '',
+    q31_answer: null,
+    q31_situation: '',
+    q32_answer: null,
+    q32_situation: '',
+    q32_situation_other: '',
+    q33_pending_02: '',
+    q33_pending_03: '',
+    q33_pending_04: '',
+    q33_pending_05: '',
+    q34_answer: null,
+    q34_cause: '',
+    q34_cause_other: '',
+    q34a_transferMethod: '',
+    q35_answer: null,
+    q35_cause: '',
+    q35_cause_other: '',
+    q36_answer: null,
+    q36_cause: '',
+    q36_cause_other: '',
+    q37_questionnaires_week: '',
+    q37_1_questionnaires_day: '',
+    q38_terrains_week: '',
+    q38_1_terrains_captured: '',
+    q39_answer: null,
+    q39_incidents: [],
+    q39_incidents_other: '',
+    q40_endTime: '',
+    additionalComments: '',
+    capturedImage: null,
+});
 
 const App: React.FC = () => {
-    const getInitialState = (): SurveyFormState => {
-        const savedData = localStorage.getItem('surveyData');
-        if (savedData) {
-            return JSON.parse(savedData);
-        }
-        return {
-            coordinacionEstatal: '',
-            municipio: '',
-            localidad: '',
-            jefeDeControl: '',
-            semana: '',
-            numeroDeGuia: '',
-            jefeDeCampo: '',
-            entrevistador: '',
-            supervisor: '',
-            fechaDeSupervision: '',
-            q1_battery: '',
-            q2_departureTime: '',
-            q3_arrivalTime: '',
-            q4_answer: null,
-            q4_cause: '',
-            q4_cause_other: '',
-            q5_answer: null,
-            q6_answer: null,
-            q6_cause: [],
-            q6_cause_other: '',
-            q7_answer: null,
-            q8_answer: null,
-            q9_answer: null,
-            q10_answer: null,
-            q10_cause: '',
-            q10_cause_other: '',
-            q11_answer: null,
-            q11_cause: '',
-            q11_cause_other: '',
-            q12_strategies: [],
-            q12_strategy_other: '',
-            q13_time: '',
-            q13_cause: '',
-            q13_cause_other: '',
-            q14_time: '',
-            q14_cause: '',
-            q14_cause_other: '',
-            q15_answer: null,
-            q15_medium: '',
-            q15_medium_other: '',
-            q16_answer: null,
-            q16_investigation: '',
-            q16_investigation_other: '',
-            q17_situation: '',
-            q17_situation_other: '',
-            q18_answer: null,
-            q18_cause: '',
-            q18_cause_other: '',
-            q19_answer: null,
-            q19_cause: '',
-            q19_cause_other: '',
-            q20_answer: null,
-            q20_cause: '',
-            q20_cause_other: '',
-            q21_answer: null,
-            q21_cause: '',
-            q21_cause_other: '',
-            q22_answer: null,
-            q22_cause: '',
-            q22_cause_other: '',
-            q23_answer: null,
-            q23_cause: '',
-            q23_cause_other: '',
-            q24_answer: null,
-            q24_situation: '',
-            q24_situation_other: '',
-            q25_answer: null,
-            q25_cause: '',
-            q25_cause_other: '',
-            q26_answer: null,
-            q26_situation: '',
-            q26_situation_other: '',
-            q27_answer: null,
-            q27_cause: '',
-            q27_cause_other: '',
-            q28_visitNumber: '',
-            q29_answer: null,
-            q29_cause: '',
-            q29_cause_other: '',
-            q30_answer: null,
-            q30_situation: '',
-            q31_answer: null,
-            q31_situation: '',
-            q32_answer: null,
-            q32_situation: '',
-            q32_situation_other: '',
-            q33_pending_02: '',
-            q33_pending_03: '',
-            q33_pending_04: '',
-            q33_pending_05: '',
-            q34_answer: null,
-            q34_cause: '',
-            q34_cause_other: '',
-            q34a_transferMethod: '',
-            q35_answer: null,
-            q35_cause: '',
-            q35_cause_other: '',
-            q36_answer: null,
-            q36_cause: '',
-            q36_cause_other: '',
-            q37_questionnaires_week: '',
-            q37_1_questionnaires_day: '',
-            q38_terrains_week: '',
-            q38_1_terrains_captured: '',
-            q39_answer: null,
-            q39_incidents: [],
-            q39_incidents_other: '',
-            q40_endTime: '',
-            additionalComments: '',
-            capturedImage: null,
-        };
-    };
-
-    const [formData, setFormData] = useState<SurveyFormState>(getInitialState());
+    const [surveys, setSurveys] = useState<SurveyFormState[]>([]);
+    const [activeSurveyId, setActiveSurveyId] = useState<number | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOnline, setIsOnline] = useState(navigator.onLine);
     const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'success' | 'error'>('idle');
+    
+    // Load initial data from localStorage
+    useEffect(() => {
+        let initialSurveys: SurveyFormState[] = [];
+        try {
+            const savedSurveysJSON = localStorage.getItem('ena_surveys');
+            if (savedSurveysJSON) {
+                initialSurveys = JSON.parse(savedSurveysJSON);
+            }
+        } catch (e) {
+            console.error("Failed to parse surveys from localStorage", e);
+            localStorage.removeItem('ena_surveys'); // Clear corrupted data
+        }
 
+        if (initialSurveys.length === 0) {
+            const newSurvey = createNewSurvey();
+            setSurveys([newSurvey]);
+            setActiveSurveyId(newSurvey.id);
+        } else {
+            setSurveys(initialSurveys);
+            const savedActiveId = localStorage.getItem('ena_active_survey_id');
+            const activeId = savedActiveId ? parseInt(savedActiveId, 10) : null;
+            if (activeId && initialSurveys.some(s => s.id === activeId)) {
+                setActiveSurveyId(activeId);
+            } else {
+                setActiveSurveyId(initialSurveys[0].id);
+            }
+        }
+    }, []);
+
+    // Persist data to localStorage on change
+    useEffect(() => {
+        try {
+            if (surveys.length > 0) {
+                localStorage.setItem('ena_surveys', JSON.stringify(surveys));
+            }
+            if (activeSurveyId !== null) {
+                localStorage.setItem('ena_active_survey_id', activeSurveyId.toString());
+            }
+        } catch (error) {
+            console.error("Failed to save data to localStorage", error);
+        }
+    }, [surveys, activeSurveyId]);
+
+    // Handle online/offline status
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
-
         window.addEventListener('online', handleOnline);
         window.addEventListener('offline', handleOffline);
-
         return () => {
             window.removeEventListener('online', handleOnline);
             window.removeEventListener('offline', handleOffline);
         };
     }, []);
     
-    useEffect(() => {
-        try {
-            localStorage.setItem('surveyData', JSON.stringify(formData));
-        } catch (error) {
-            console.error("Failed to save survey data to localStorage", error);
-        }
-    }, [formData]);
+    const activeSurvey = surveys.find(s => s.id === activeSurveyId);
 
     const handleChange = useCallback((field: keyof SurveyFormState, value: string | number | boolean | null | string[]) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
-    }, []);
+        if (activeSurveyId === null) return;
+        setSurveys(prevSurveys =>
+            prevSurveys.map(survey =>
+                survey.id === activeSurveyId ? { ...survey, [field]: value } : survey
+            )
+        );
+    }, [activeSurveyId]);
 
     const handleSync = async () => {
         if (!isOnline) {
-            setSyncStatus('error');
             alert("No hay conexión a internet. No se puede sincronizar.");
-            setTimeout(() => setSyncStatus('idle'), 3000);
+            return;
+        }
+        if (!activeSurvey) {
+            alert("No hay una encuesta activa para sincronizar.");
             return;
         }
         setSyncStatus('syncing');
@@ -168,10 +204,8 @@ const App: React.FC = () => {
         try {
             const response = await fetch('/api/sync-to-sheet', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(activeSurvey),
             });
 
             if (!response.ok) {
@@ -179,7 +213,7 @@ const App: React.FC = () => {
                 throw new Error(errorData.message || 'Error en el servidor');
             }
 
-            console.log("Syncing data:", formData);
+            console.log("Syncing data:", activeSurvey);
             setSyncStatus('success');
 
         } catch (error) {
@@ -190,18 +224,76 @@ const App: React.FC = () => {
         }
     };
 
-    const resetForm = () => {
-        if(window.confirm("¿Está seguro que desea borrar todos los datos del formulario? Esta acción no se puede deshacer.")) {
-            localStorage.removeItem('surveyData');
-            setFormData(getInitialState());
-        }
+    const handleSaveAndNew = () => {
+        const newSurvey = createNewSurvey();
+        setSurveys(prev => [...prev, newSurvey]);
+        setActiveSurveyId(newSurvey.id);
     };
 
-    const isTimeMoreThanOneHour = (timeString: string) => {
-        if (!timeString) return false;
-        const [hours, minutes] = timeString.split(':').map(Number);
-        if (isNaN(hours) || isNaN(minutes)) return false;
-        return hours > 1 || (hours === 1 && minutes > 0);
+    const handleLoadSurvey = (id: number) => {
+        setActiveSurveyId(id);
+        setIsModalOpen(false);
+    };
+
+    const handleDeleteSurvey = (id: number) => {
+        if (window.confirm("¿Está seguro que desea borrar esta encuesta? Esta acción no se puede deshacer.")) {
+            const newSurveys = surveys.filter(s => s.id !== id);
+            setSurveys(newSurveys);
+
+            if (activeSurveyId === id) {
+                if (newSurveys.length > 0) {
+                    setActiveSurveyId(newSurveys[0].id);
+                } else {
+                    const newSurvey = createNewSurvey();
+                    setSurveys([newSurvey]);
+                    setActiveSurveyId(newSurvey.id);
+                }
+            }
+        }
+    };
+    
+    const handleDownloadCsv = () => {
+        if (!activeSurvey) {
+            alert("No hay una encuesta activa para descargar.");
+            return;
+        }
+
+        const surveyData = activeSurvey;
+        const headers = Object.keys(surveyData).filter(k => k !== 'capturedImage') as (keyof SurveyFormState)[];
+
+        const escapeCsvCell = (cellData: any): string => {
+            if (cellData === null || cellData === undefined) {
+                return '';
+            }
+            let cell = Array.isArray(cellData) ? cellData.join('; ') : String(cellData);
+            cell = cell.replace(/"/g, '""'); // Escape double quotes
+            if (cell.includes(',') || cell.includes('\n') || cell.includes('"')) {
+                cell = `"${cell}"`; // Wrap in double quotes
+            }
+            return cell;
+        };
+
+        const headerRow = headers.join(',');
+        const dataRow = headers.map(header => escapeCsvCell(surveyData[header])).join(',');
+        const csvContent = `${headerRow}\n${dataRow}`;
+        
+        const blob = new Blob([`\uFEFF${csvContent}`], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+
+        const url = URL.createObjectURL(blob);
+        const fileName = `ENA_Supervision_${surveyData.municipio || 'N-A'}_${surveyData.fechaDeSupervision || surveyData.id}.csv`;
+        
+        link.setAttribute('href', url);
+        link.setAttribute('download', fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
+
+    const shouldShowCauseForTime = (timeString: string) => {
+        return !!timeString && timeString.length > 0;
     };
 
     const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
@@ -209,6 +301,16 @@ const App: React.FC = () => {
             <h3 className="font-bold text-gray-700">{title}</h3>
         </div>
     );
+    
+    if (!activeSurvey) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="text-lg font-semibold">Cargando encuesta...</div>
+            </div>
+        );
+    }
+
+    const formData = activeSurvey;
 
     return (
         <div className="bg-gray-100 min-h-screen font-sans">
@@ -291,8 +393,8 @@ const App: React.FC = () => {
                     {/* Questions 13 onwards */}
                     <QuestionCard number={13} text="¿Cuánto tiempo le ocupa al (la) entrevistador(a) localizar el domicilio de la persona productora?">
                         <div>
-                             <input type="time" value={formData.q13_time} onChange={e => handleChange('q13_time', e.target.value)} className="w-32 p-2 border rounded-md" />
-                             {isTimeMoreThanOneHour(formData.q13_time) && (
+                             <input type="text" placeholder="Ej: 1 hora 30 min" value={formData.q13_time} onChange={e => handleChange('q13_time', e.target.value)} className="w-48 p-2 border rounded-md" />
+                             {shouldShowCauseForTime(formData.q13_time) && (
                                 <ConditionalInput title="Si la respuesta es más de una hora, indique la causa:" type="radio" options={[{value: '1', label: 'Se presentaron dificultades para localizar al (la) productor(a).'}, {value: '2', label: 'No se encontró al (la) productor(a).'}, {value: '3', label: 'Otra causa.'}]} value={formData.q13_cause} onChange={(v) => handleChange('q13_cause', v)} otherValue={formData.q13_cause_other} onOtherChange={(v) => handleChange('q13_cause_other', v)} showOther={formData.q13_cause === '3'} />
                              )}
                         </div>
@@ -300,8 +402,8 @@ const App: React.FC = () => {
 
                      <QuestionCard number={14} text="¿Cuánto tiempo tarda el (la) entrevistador(a) en acudir o ubicar a alguna autoridad local como: comisario(a) ejidal, encargado(a) del distrito de riego, etcétera?">
                         <div>
-                             <input type="time" value={formData.q14_time} onChange={e => handleChange('q14_time', e.target.value)} className="w-32 p-2 border rounded-md" />
-                             {isTimeMoreThanOneHour(formData.q14_time) && (
+                             <input type="text" placeholder="Ej: 45 minutos" value={formData.q14_time} onChange={e => handleChange('q14_time', e.target.value)} className="w-48 p-2 border rounded-md" />
+                             {shouldShowCauseForTime(formData.q14_time) && (
                                 <ConditionalInput title="Si la respuesta es más de una hora, indique la causa:" type="radio" options={[{value: '1', label: 'No existe transporte hasta la localidad.'}, {value: '2', label: 'Por problemas de acceso a la localidad (caminos en mal estado).'}, {value: '3', label: 'Otra causa.'}]} value={formData.q14_cause} onChange={(v) => handleChange('q14_cause', v)} otherValue={formData.q14_cause_other} onOtherChange={(v) => handleChange('q14_cause_other', v)} showOther={formData.q14_cause === '3'} />
                              )}
                         </div>
@@ -556,7 +658,8 @@ const App: React.FC = () => {
 
             </main>
             <CameraFab image={formData.capturedImage} onCapture={(image) => handleChange('capturedImage', image)} />
-            <Footer isOnline={isOnline} syncStatus={syncStatus} onSync={handleSync} onReset={resetForm} />
+            <Footer isOnline={isOnline} syncStatus={syncStatus} onSync={handleSync} onSaveAndNew={handleSaveAndNew} onShowSaved={() => setIsModalOpen(true)} onDownloadCsv={handleDownloadCsv} />
+            <SavedSurveysModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} surveys={surveys} onLoad={handleLoadSurvey} onDelete={handleDeleteSurvey} />
         </div>
     );
 };

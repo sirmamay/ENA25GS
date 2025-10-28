@@ -32,25 +32,14 @@ const Header: React.FC<HeaderProps> = ({ formData, handleChange }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 pt-4 border-t-2 border-black">
-                 <InfoInput label="COORDINACIÓN ESTATAL" value={formData.coordinacionEstatal} onChange={e => handleChange('coordinacionEstatal', e.target.value)} />
-                 <InfoInput label="JEFE(A) DE CAMPO" value={formData.jefeDeCampo} onChange={e => handleChange('jefeDeCampo', e.target.value)} />
                  <InfoInput label="MUNICIPIO" value={formData.municipio} onChange={e => handleChange('municipio', e.target.value)} />
+                 <InfoInput label="JEFE(A) DE CAMPO" value={formData.jefeDeCampo} onChange={e => handleChange('jefeDeCampo', e.target.value)} />
                  <InfoInput label="ENTREVISTADOR(A)" value={formData.entrevistador} onChange={e => handleChange('entrevistador', e.target.value)} />
-                 <InfoInput label="LOCALIDAD" value={formData.localidad} onChange={e => handleChange('localidad', e.target.value)} />
-                 <InfoInput label="SUPERVISOR(A)" value={formData.supervisor} onChange={e => handleChange('supervisor', e.target.value)} />
-                 <InfoInput label="JEFE(A) DE CONTROL" value={formData.jefeDeControl} onChange={e => handleChange('jefeDeControl', e.target.value)} />
                  <div className="flex flex-col">
                     <label className="text-xs font-semibold text-gray-600 mb-1">FECHA DE SUPERVISIÓN</label>
                     <input type="date" value={formData.fechaDeSupervision} onChange={e => handleChange('fechaDeSupervision', e.target.value)} className="border-b-2 border-gray-300 focus:border-blue-500 outline-none px-1 py-0.5 text-sm"/>
                 </div>
-                 <div className="flex space-x-4">
-                    <div className="flex-1">
-                        <InfoInput label="SEMANA" value={formData.semana} onChange={e => handleChange('semana', e.target.value)} />
-                    </div>
-                    <div className="flex-1">
-                        <InfoInput label="NÚMERO DE GUÍA" value={formData.numeroDeGuia} onChange={e => handleChange('numeroDeGuia', e.target.value)} />
-                    </div>
-                 </div>
+                <InfoInput label="SEMANA" value={formData.semana} onChange={e => handleChange('semana', e.target.value)} />
             </div>
 
             <div className="text-sm bg-gray-50 p-3 border border-gray-200 rounded-md">

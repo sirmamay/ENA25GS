@@ -1,15 +1,11 @@
 export type YesNoNa = 'yes' | 'no' | 'na' | null;
 
 export interface SurveyFormState {
-  coordinacionEstatal: string;
+  id: number;
   municipio: string;
-  localidad: string;
-  jefeDeControl: string;
   semana: string;
-  numeroDeGuia: string;
   jefeDeCampo: string;
   entrevistador: string;
-  supervisor: string;
   fechaDeSupervision: string;
   
   // Page 1

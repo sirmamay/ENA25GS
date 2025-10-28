@@ -4,7 +4,9 @@ interface FooterProps {
     isOnline: boolean;
     syncStatus: 'idle' | 'syncing' | 'success' | 'error';
     onSync: () => void;
-    onReset: () => void;
+    onSaveAndNew: () => void;
+    onShowSaved: () => void;
+    onDownloadCsv: () => void;
 }
 
 const SyncIcon: React.FC<{ status: 'idle' | 'syncing' | 'success' | 'error' }> = ({ status }) => {
@@ -40,20 +42,32 @@ const getSyncButtonClass = (status: 'idle' | 'syncing' | 'success' | 'error', is
     }
 }
 
-const Footer: React.FC<FooterProps> = ({ isOnline, syncStatus, onSync, onReset }) => {
+const Footer: React.FC<FooterProps> = ({ isOnline, syncStatus, onSync, onSaveAndNew, onShowSaved, onDownloadCsv }) => {
     return (
         <footer className="sticky bottom-0 bg-white border-t-2 border-gray-200 shadow-top z-10">
-            <div className="max-w-4xl mx-auto p-4 flex justify-between items-center">
+            <div className="max-w-4xl mx-auto p-4 flex justify-between items-center flex-wrap gap-4">
                 <div className="flex items-center space-x-2">
                     <div className={`w-3 h-3 rounded-full ${isOnline ? 'bg-green-500' : 'bg-red-500'}`}></div>
                     <span className="text-sm font-medium text-gray-700">{isOnline ? 'En línea' : 'Sin conexión'}</span>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 sm:space-x-4">
                      <button
-                        onClick={onReset}
-                        className="px-4 py-2 border border-red-500 rounded-md text-sm font-medium text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
+                        onClick={onSaveAndNew}
+                        className="px-3 py-2 border border-gray-400 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Limpiar Formulario
+                        Guardar y Nuevo
+                    </button>
+                     <button
+                        onClick={onDownloadCsv}
+                        className="px-3 py-2 border border-gray-400 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Descargar CSV
+                    </button>
+                    <button
+                        onClick={onShowSaved}
+                        className="px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Encuestas Guardadas
                     </button>
                     <button
                         onClick={onSync}
